@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const user = req.body
   await Users.create(user);
-  res.json(user);
+  res.send(user);
 });
 
 module.exports = router;
