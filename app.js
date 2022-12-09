@@ -14,7 +14,7 @@ var app = express();
 
 
 //PORT CONFIG
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
 //CONFIG BODY PARSER MIDDLEWARE
 app.use(bodyParser.urlencoded({ extended: false }));

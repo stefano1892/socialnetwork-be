@@ -13,10 +13,20 @@ router.get('/', async (req, res) => {
 });
 
 /* POST */
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
   const user = req.body
-  await Users.create(user);
-  res.send(user);
+  const emailInsert = req.body.email
+  const checkEmail = await Users.findOne({
+    where: {
+      email: emailInsert
+    }
+  })
+  if (checkEmail) {
+    res.send('Utente esistente')
+  } else {
+    await Users.create(user);
+    res.send(user);
+  }
 });
 
 module.exports = router;
