@@ -1,14 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
 const db = require("./models")
 
-var loginRouter = require('./routes/login');
-var registerRouter = require('./routes/register');
+const loginRouter = require('./routes/login');
+const registerRouter = require('./routes/register');
+const updatePasswordRouter = require('./routes/updatePassword')
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(express.json({ limit: '50mb' }));
 //LOGIN
 app.use('/api/login', loginRouter);
 app.use('/api/register', registerRouter);
+app.use('/api/updatePassword/:id', updatePasswordRouter);
 
 
 //******************* STOP ROUTING *************************
