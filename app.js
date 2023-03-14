@@ -33,8 +33,10 @@ app.use(express.json({ limit: '50mb' }));
 
 //LOGIN
 app.use('/api/login', loginRouter);
+
 app.use('/api/register', registerRouter);
-app.use('/api/updatePassword/:id', updatePasswordRouter);
+
+app.use('/api/updatePassword', updatePasswordRouter);
 
 
 //******************* STOP ROUTING *************************
@@ -43,7 +45,6 @@ app.use('/api/updatePassword/:id', updatePasswordRouter);
 //  res.send('Successful response.');
 //});
 
-console.log(PORT)
 
 db.sequelize.sync().then(() => {
   app.listen(PORT, () =>
